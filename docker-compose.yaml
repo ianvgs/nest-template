@@ -1,0 +1,28 @@
+version: "3.1"
+services:
+  nest:
+    build: .
+    container_name: nest    
+    command: "npm run start:dev"
+    restart: always
+    ports: 
+    - 3000:3000
+    volumes: 
+    - .:/usr/app
+    depends_on:
+      - mysql
+    environment:
+    - TYPEORM_MIGRATIONS_RUN=true
+  mysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: iantesting
+    ports: 
+    - 3306:3306
+
+
+
