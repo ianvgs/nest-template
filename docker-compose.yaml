@@ -3,7 +3,7 @@ services:
   nest:
     build: .
     container_name: nest    
-    command: "npm run start:dev"
+    command: "npm run start:docker"
     restart: always
     ports: 
     - 3000:3000
@@ -14,8 +14,7 @@ services:
     environment:
     - TYPEORM_MIGRATIONS_RUN=true
   mysql:
-    image: mysql
-    command: --default-authentication-plugin=mysql_native_password
+    image: mysql  
     container_name: mysql
     restart: always
     environment:

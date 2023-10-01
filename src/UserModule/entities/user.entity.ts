@@ -9,6 +9,12 @@ import {
 
 @Entity('user')
 export class User {
+
+  constructor(nome) {
+    this.nome = nome;
+  }
+
+
   @PrimaryGeneratedColumn({ type: 'int', name: 'id' })
   id: number;
 

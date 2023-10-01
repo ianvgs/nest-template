@@ -24,6 +24,7 @@ export class UserController {
   ) { }
 
   @Post()
+  @ApiOperation({ summary: 'Creates user.', description: 'Create an user and return it from database.' })
   @ApiBody({ type: CreateUserDto })
   async createUser(@Body() user: CreateUserDto): Promise<User> {
     return await this.ucCadastrarUser.run(user);
