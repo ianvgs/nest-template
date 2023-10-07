@@ -37,6 +37,8 @@ describe('AppController', () => {
   afterEach(async () => {
     await app.close();
   });
+
+
   //Unit tests
   describe('AppController unit tests', () => {
     it('should return "Hello World!"', () => {
@@ -44,8 +46,8 @@ describe('AppController', () => {
     });
   });
 
-  describe("appController http tests", () => {
-    //http tests
+   //Http tests
+  describe("appController http tests", () => {   
     it('/ (GET)', () => {
       return request(app.getHttpServer())
         .get('/')
