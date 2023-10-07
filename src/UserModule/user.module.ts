@@ -8,30 +8,33 @@ import { UserController } from './controllers/user.controller';
 //@Services
 import { UserService } from './services/user.service';
 //@UseCases
-import { UcCadastrarUser } from './useCases/userUseCases/UcCadastrarUser';
+import { UcCadastrarUser } from './useCases/UcCadastrarUser';
 /* import { ConfigService } from '@nestjs/config'; */
 import { ProjectNameMiddleware } from './middlewares/project-name.middleware';
+import { PaymentService } from './services/payment.service';
 /* import { APP_INTERCEPTOR } from '@nestjs/core'; */
 
 @Module({
   imports: [
     TypeOrmModule.forFeature(
-      [User,],
+      [User],
       'user_connection'
     ),
   ],
   controllers: [UserController],
   providers: [
+
+    { provide: 'PAYMENT_SERVICE', useClass: PaymentService },
+    UcCadastrarUser,
     UserService,
-    UcCadastrarUser
   ],
 })
-export class UserModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply
-      ()
-      .exclude()
-      .forRoutes();
-  }
+export class UserModule /* implements NestModule */ {
+  /*   configure(consumer: MiddlewareConsumer) {
+      consumer
+        .apply
+        ()
+        .exclude()
+        .forRoutes();
+    } */
 }

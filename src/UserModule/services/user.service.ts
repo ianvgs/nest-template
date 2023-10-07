@@ -15,19 +15,19 @@ export class UserService {
   ) { }
 
 
-  
-  /* 
-    async createUser(props: Partial<User>): Promise<User> {
-      const { nome } = props;
-      const createdUser = this.userRepo.create({
-        nome,
-        createdAt: new Date(),
-  
-      });
-      const savedCategoria = await this.userRepo.save(createdUser);
-      return savedCategoria;
-    } */
+  async addNumbers(numOne: number, numTwo: number) {
+    return numOne + numTwo
+  }
 
+
+  async getById(id: number): Promise<User> {
+    const user = await this.userRepo.findOneBy({ id });
+    return user
+  }
+  async findAll(): Promise<User[]> {
+    const allUser = await this.userRepo.find();
+    return allUser
+  }
 
   async createUser(createUserDto: CreateUserDto): Promise<User> {
 
@@ -51,6 +51,11 @@ export class UserService {
       //Comita
       await queryRunner.commitTransaction();
 
+  /*     return {
+        ...createdUser,
+        //Esse undefined não retorna o password
+
+      }; */
       return {
         ...createdUser,
         //Esse undefined não retorna o password
