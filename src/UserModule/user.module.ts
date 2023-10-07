@@ -1,5 +1,5 @@
 //@Node Modules
-import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule, RequestMethod, ValidationPipe } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 //@Models(entities)
 import { User } from './entities/user.entity';

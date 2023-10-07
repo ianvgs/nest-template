@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, ValidationPipe } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './UserModule/user.module';
@@ -27,4 +27,8 @@ import DatabasesConfig from './config/databases.config';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {
+/*   configure(consumer: MiddlewareConsumer) {
+    consumer.apply(ValidationPipe).forRoutes('*');
+  } */
+}
